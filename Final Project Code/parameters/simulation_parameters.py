@@ -108,8 +108,8 @@ Va0 = 0.0
 model1 = 'MiniC130.stl'
 scale1 = 0.1
 ##Model 2##
-model2 = 'F16.stl'
-scale2 = 0.5
+model2 = 'F117.stl'
+scale2 = 0.02
 
 g_lim = 5
 pause = 0.01

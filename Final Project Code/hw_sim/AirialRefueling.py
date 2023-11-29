@@ -21,7 +21,7 @@ from dynamics.FlightDynamics2 import FlightDynamics2 as Dynamics2
 
 
 #instantiate plots
-#flightcharts = FlightCharts()
+flightcharts = FlightCharts()
 #flight_anim = flight_animation()
 dynamics = Dynamics()
 dynamics2 = Dynamics2()
@@ -87,9 +87,9 @@ gains = TransferFunctions.statespace(X_trim, U_trim)
 vertexes2 = Vertexes(P.model2)
 verts2 = vertexes2.stl_to_vertices() * P.scale2
 #For F16:
-verts2 = np.matmul(verts2, rot(0, 0, -np.pi / 2))
+#verts2 = np.matmul(verts2, rot(0, 0, -np.pi / 2))
 #For F117:
-#verts2 = np.matmul(verts2, rot(0, 0, np.pi/4))
+verts2 = np.matmul(verts2, rot(0, 0, np.pi/4))
 
 
 #Initialize Variables
@@ -131,7 +131,7 @@ gains2 = TransferFunctions.statespace(X_trim2, U_trim)
  
 
 ##################Main simulation loop######################
-plt.pyplot.pause(10)
+#plt.pyplot.pause(10)
 print("Press Command-Q to exit...")
 while t < P.end_time:
     t_next_plot = t+P.ts_plotting
@@ -142,13 +142,15 @@ while t < P.end_time:
         h_c = 100
         #else:
         #    h_c = 200
-        if -dynamics._state.item(2) < 90:
-            chi_c = 0
-        elif -dynamics._state.item(2) < 190:
-            chi_c = np.deg2rad(30)
+        # if -dynamics._state.item(2) < 90:
+        #     chi_c = 0
+        # elif -dynamics._state.item(2) < 190:
+        #     chi_c = np.deg2rad(30)
         
-        if t > 15:
-            chi_c = -np.deg2rad(30)
+        # if t > 15:
+        #     chi_c = -np.deg2rad(30)
+        chi_c = 0
+    
         
         ##Model 1##
         phi = dynamics._state.item(6)
@@ -216,6 +218,6 @@ while t < P.end_time:
     Animation.update(tVerts, tVerts2, dynamics._state, force, lmn, delta, dPack, t)
     
     #flight_anim.update(dynamics._state) 
-    #flightcharts.update(t,dynamics._state,delta,Va,chi,Va_c,chi_c,h_c)
+    flightcharts.update(t,dynamics._state,delta,Va,chi,Va_c,chi_c,h_c)
 
     

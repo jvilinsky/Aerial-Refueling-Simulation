@@ -228,7 +228,7 @@ class transferfunctions:
             ki_airsp = wn_airspeed**2 / (ktheta_DC * P.g)
 
             # Airspeed from Throttle
-            tr_throttle = 15
+            tr_throttle = 13.85
             zeta_throttle = 1.5
             wn_throttle = 2.2 / tr_throttle
             kp_throt = (2 * zeta_throttle * wn_throttle - self.a_V1)/self.a_V2
