@@ -145,7 +145,7 @@ while t < P.end_time:
         h_c = 100
     
         chi_c = 0
-        # if t > 8:
+        # if t > 25:
         #     chi_c = np.deg2rad(45)
     
         
@@ -221,9 +221,16 @@ while t < P.end_time:
         if 0 <= Ped and Ped < 0.6:
             chi_c2 = chi_c
 
-        if 15 < t and t < 19:
-            Va_c2 = 33
+        # if 15 < t and t < 19:
+        #     Va_c2 = 33
 
+        if t > 15:
+            if 15 <= Pnd and Pnd < 20:
+                Va_c2 = 33
+            if 12.1 <= Pnd and Pnd < 15:
+                Va_c2 = 34
+            if 11.9 <= Pnd and Pnd < 12.1:
+                Va_c2 = 35
 
         u_state = np.array([t,phi,theta,chi2,p,q,r,Va2,h,Va_c2,h_c2,chi_c2])
 
